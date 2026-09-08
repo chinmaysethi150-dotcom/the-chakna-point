@@ -1,0 +1,32 @@
+workflows:
+  android-debug:
+    name: The Chakna Point Android APK
+    instance_type: linux_x2
+    environment:
+      java: 17
+    scripts:
+      - name: Prepare Android project
+        script: |
+          set -e
+          ZIP=$(find . -maxdepth 1 -type f -name 'The_Chakna_Point_READY_PRO*.zip' | head -1)
+          if [ -z "$ZIP" ]; then
+            ZIP=$(find . -maxdepth 1 -type f -name 'The_Chakna_Point_READY_PROJECT.zip' | head -1)
+          fi
+          if [ -z "$ZIP" ]; then
+            echo "Ready Android ZIP not found in repository root"
+            exit 1
+          fi
+          rm -rf build_project
+          mkdir -p build_project
+          unzip -q "$ZIP" -d build_project
+          PROJECT=$(find build_project -type f -name settings.gradle -print -quit | xargs -r dirname)
+          if [ -z "$PROJECT" ]; then
+            echo "settings.gradle not found"
+            exit 1
+          fi
+          echo "Project: $PROJECT"
+          cd "$PROJECT"
+          gradle --version
+          gradle assembleDebug --no-daemon --stacktrace
+    artifacts:
+      - build_project/**/app/build/outputs/apk/debug/app-debug.apk
