@@ -30,12 +30,7 @@ jobs:
           sed -i 's/targetSdkVersion 35/targetSdkVersion 34/g' project/The_Chakna_Point_ANDROIDIDE/app/build.gradle
           sed -i 's#<manifest#<manifest package="com.thechaknapoint.customer"#' project/The_Chakna_Point_ANDROIDIDE/app/src/main/AndroidManifest.xml
 
-      - name: Install Android 34
-        run: |
-          yes | sdkmanager --licenses >/dev/null || true
-          sdkmanager "platforms;android-34" "build-tools;34.0.0"
-
-      - name: Install Gradle 6.1.1
+      - name: Install Gradle
         run: |
           curl -L -o /tmp/gradle.zip https://services.gradle.org/distributions/gradle-6.1.1-bin.zip
           unzip -q /tmp/gradle.zip -d /tmp
