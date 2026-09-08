@@ -24,23 +24,12 @@ jobs:
         run: |
           unzip -q The_Chakna_Point_READY_PRO*.zip -d project
 
-      - name: Fix Android SDK version
+      - name: Find project
         run: |
-          sed -i 's/compileSdkVersion 35/compileSdkVersion 30/g' project/The_Chakna_Point_ANDROIDIDE/app/build.gradle
-          sed -i 's/targetSdkVersion 35/targetSdkVersion 30/g' project/The_Chakna_Point_ANDROIDIDE/app/build.gradle
+          find project -name settings.gradle -print
 
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-version: '6.1.1'
-
-      - name: Build APK
+      - name: Fix SDK version
         run: |
-          cd project/The_Chakna_Point_ANDROIDIDE
-          gradle assembleDebug --no-daemon
-
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: The-Chakna-Point-APK
-          path: project/The_Chakna_Point_ANDROIDIDE/app/build/outputs/apk/debug/app-debug.apk
+          APP=$(find project -name build.gradle -path "*/app/build.gradle" | head -1)
+          sed -i 's/compileSdkVersion 35/compileSdkVersion 30/g' "$APP"
+          sed -i 's/target
