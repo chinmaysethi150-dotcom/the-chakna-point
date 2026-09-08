@@ -24,9 +24,16 @@ jobs:
         run: |
           unzip -q The_Chakna_Point_ANDROIDIDE_REAL_FIX.zip -d project
 
-      - name: Fix AndroidManifest
+      - name: Fix Android project
         run: |
+          sed -i 's/compileSdkVersion 35/compileSdkVersion 34/g' project/The_Chakna_Point_ANDROIDIDE/app/build.gradle
+          sed -i 's/targetSdkVersion 35/targetSdkVersion 34/g' project/The_Chakna_Point_ANDROIDIDE/app/build.gradle
           sed -i 's#<manifest#<manifest package="com.thechaknapoint.customer"#' project/The_Chakna_Point_ANDROIDIDE/app/src/main/AndroidManifest.xml
+
+      - name: Install Android 34
+        run: |
+          yes | sdkmanager --licenses >/dev/null || true
+          sdkmanager "platforms;android-34" "build-tools;34.0.0"
 
       - name: Install Gradle 6.1.1
         run: |
