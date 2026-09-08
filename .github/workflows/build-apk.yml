@@ -1,9 +1,9 @@
 name: Build APK
 
 on:
-  workflow_dispatch:
-
-jobs:
+    push:
+    branches:
+      - main
   build:
     runs-on: ubuntu-latest
 
