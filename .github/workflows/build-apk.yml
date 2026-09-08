@@ -1,3 +1,45 @@
+name: Build APK
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java 8
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '8'
+
+      - name: Extract Android project
+        run: |
+          unzip -q The_Chakna_Point_ANDROIDIDE_REAL_FIX.zip -d project
+
       - name: Fix AndroidManifest
         run: |
           sed -i 's#<manifest#<manifest package="com.thechaknapoint.customer"#' project/The_Chakna_Point_ANDROIDIDE/app/src/main/AndroidManifest.xml
+
+      - name: Install Gradle 6.1.1
+        run: |
+          curl -L -o /tmp/gradle.zip https://services.gradle.org/distributions/gradle-6.1.1-bin.zip
+          unzip -q /tmp/gradle.zip -d /tmp
+
+      - name: Build APK
+        run: |
+          cd project/The_Chakna_Point_ANDROIDIDE
+          /tmp/gradle-6.1.1/bin/gradle assembleDebug --no-daemon
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: The-Chakna-Point-APK
+          path: project/The_Chakna_Point_ANDROIDIDE/app/build/outputs/apk/debug/app-debug.apk
