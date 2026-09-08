@@ -20,25 +20,24 @@ jobs:
           distribution: temurin
           java-version: '8'
 
-      - name: Extract Android project
+      - name: Extract project
         run: |
-          unzip -q The_Chakna_Point_ANDROIDIDE_REAL_FIX.zip -d project
+          unzip -q The_Chakna_Point_READY_PRO*.zip -d project
 
-      - name: Fix Android project
+      - name: Fix Android SDK version
         run: |
-          sed -i 's/compileSdkVersion 35/compileSdkVersion 34/g' project/The_Chakna_Point_ANDROIDIDE/app/build.gradle
-          sed -i 's/targetSdkVersion 35/targetSdkVersion 34/g' project/The_Chakna_Point_ANDROIDIDE/app/build.gradle
-          sed -i 's#<manifest#<manifest package="com.thechaknapoint.customer"#' project/The_Chakna_Point_ANDROIDIDE/app/src/main/AndroidManifest.xml
+          sed -i 's/compileSdkVersion 35/compileSdkVersion 30/g' project/The_Chakna_Point_ANDROIDIDE/app/build.gradle
+          sed -i 's/targetSdkVersion 35/targetSdkVersion 30/g' project/The_Chakna_Point_ANDROIDIDE/app/build.gradle
 
-      - name: Install Gradle
-        run: |
-          curl -L -o /tmp/gradle.zip https://services.gradle.org/distributions/gradle-6.1.1-bin.zip
-          unzip -q /tmp/gradle.zip -d /tmp
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '6.1.1'
 
       - name: Build APK
         run: |
           cd project/The_Chakna_Point_ANDROIDIDE
-          /tmp/gradle-6.1.1/bin/gradle assembleDebug --no-daemon
+          gradle assembleDebug --no-daemon
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
