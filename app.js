@@ -14,11 +14,14 @@ function renderCart(){let rows=Object.entries(cart).map(([i,q])=>`<div class="ca
 
 // No mobile number or SMS/OTP is required. Customers use Firebase Anonymous Auth.
 async function startApp(){
+  // Show the shop immediately. Firebase sign-in runs in the background.
+  // This keeps the menu usable even if Firebase authentication is temporarily unavailable.
+  show("home");
+  renderMenu();
   try{
     if(!auth.currentUser) await auth.signInAnonymously();
   }catch(e){
-    console.error(e);
-    alert(e.message||"Unable to start the app.");
+    console.error("Firebase anonymous auth:",e);
   }
 }
 startApp();
@@ -28,5 +31,5 @@ $("backHome").onclick=()=>show("home");
 $("continue").onclick=()=>{cart={};renderCartBar();show("home")};
 $("locationBtn").onclick=()=>navigator.geolocation?navigator.geolocation.getCurrentPosition(p=>{$("address").value=`Current location: ${p.coords.latitude}, ${p.coords.longitude}`},()=>alert("Location permission nahi mila.")):alert("Location supported nahi hai.");
 $("placeOrder").onclick=async()=>{try{if(!auth.currentUser)throw Error("Please login again.");let t=totals();if(!t.sub)throw Error("Cart empty.");let name=$("name").value.trim(),address=$("address").value.trim();if(!name||!address)throw Error("Name aur address bhariye.");$("orderMsg").textContent="Placing order...";let items=Object.entries(cart).map(([i,q])=>({name:products[i][0],price:products[i][1],quantity:q}));await db.collection("orders").add({customerUid:auth.currentUser.uid,name,address,items,subtotal:t.sub,deliveryCharge:t.delivery,total:t.total,payment:$("payment").value,paymentStatus:"Pending",status:"New",createdAt:firebase.firestore.FieldValue.serverTimestamp()});$("orderMsg").textContent="";show("success")}catch(e){$("orderMsg").textContent=e.message}};
-auth.onAuthStateChanged(u=>{if(u){show("home");renderMenu()}});
+auth.onAuthStateChanged(u=>{if(u){console.log("Customer session ready");}});
 renderCartBar();
