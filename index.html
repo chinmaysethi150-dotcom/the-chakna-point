@@ -17,7 +17,7 @@
     <header><button class="ghost" id="backHome">← Back</button><b>Your Cart</b></header>
     <div id="cartItems"></div>
     <div class="summary"><div>Subtotal <b id="subtotal">₹0</b></div><div>Delivery <b id="delivery">₹30</b></div><div class="total">Total <b id="grandTotal">₹0</b></div></div>
-    <input id="name" placeholder="Your name"><textarea id="address" placeholder="Full delivery address"></textarea>
+    <input id="name" placeholder="Your name"><input id="phone" type="tel" inputmode="numeric" maxlength="10" placeholder="Mobile number (10 digits)"><textarea id="address" placeholder="Full delivery address"></textarea>
     <button id="locationBtn" class="secondary">📍 Use current location</button>
     <select id="payment"><option value="COD">Cash on Delivery</option><option value="UPI">UPI</option></select>
     <button id="placeOrder">Place Order</button><p id="orderMsg" class="msg"></p>
