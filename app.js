@@ -1,4 +1,4 @@
-const firebaseConfig={apiKey:"AIzaSyD0QrLbtcaiKhpvfG4YjWva3dHOHDfL7o",authDomain:"the-chakna-point.firebaseapp.com",projectId:"the-chakna-point",storageBucket:"the-chakna-point.firebasestorage.app",messagingSenderId:"364742522195",appId:"1:364742522195:android:97ac9c14b76d39e4a91da6"};
+const firebaseConfig={apiKey:"AIzaSyDMBWthbJXYQgFajXqC56NM0jyYS5i9JRk",authDomain:"the-chakna-point.firebaseapp.com",projectId:"the-chakna-point",storageBucket:"the-chakna-point.firebasestorage.app",messagingSenderId:"364742522195",appId:"1:364742522195:web:c38935e8f142a6d5a91da6",measurementId:"G-XLZ1452CQ7"};
 firebase.initializeApp(firebaseConfig);
 const auth=firebase.auth(), db=firebase.firestore();
 const products=[["Chicken Kasa",70],["Chicken Pakoda",70],["Chicken Liver",70],["Egg Omelette",50],["Egg Chop",40],["Mutton",80],["Sprite",20],["Thums Up",20],["Water Bottle",20],["Kurkure Legs",20],["Cigarette Packet",0]];
