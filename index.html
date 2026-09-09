@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#111827"><link rel="manifest" href="manifest.json">
+<title>The Chakna Point</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <section id="login" class="screen">
+    <div class="brand">🌶️</div><h1>The Chakna Point</h1><p class="muted">Enter your mobile number to continue</p>
+    <input id="phone" type="tel" placeholder="+91 9876543210" maxlength="14">
+    <button id="continueLogin">Continue</button>
+    <p id="loginMsg" class="msg"></p>
+  </section>
+  <section id="home" class="screen" hidden>
+    <header><div><b>The Chakna Point</b><small id="userPhone"></small></div><button class="ghost" id="logout">Logout</button></header>
+    <div class="hero"><h2>Order your favourite chakna 🍗</h2><p>Fresh • Fast • Nearby delivery</p></div>
+    <div id="menu" class="grid"></div>
+    <div class="cartbar">Cart: <b id="cartCount">0</b> items <button id="openCart">View Cart ₹<span id="cartTotal">0</span></button></div>
+  </section>
+  <section id="cart" class="screen" hidden>
+    <header><button class="ghost" id="backHome">← Back</button><b>Your Cart</b></header>
+    <div id="cartItems"></div>
+    <div class="summary"><div>Subtotal <b id="subtotal">₹0</b></div><div>Delivery <b id="delivery">₹30</b></div><div class="total">Total <b id="grandTotal">₹0</b></div></div>
+    <input id="name" placeholder="Your name"><textarea id="address" placeholder="Full delivery address"></textarea>
+    <button id="locationBtn" class="secondary">📍 Use current location</button>
+    <select id="payment"><option value="COD">Cash on Delivery</option><option value="UPI">UPI</option></select>
+    <button id="placeOrder">Place Order</button><p id="orderMsg" class="msg"></p>
+  </section>
+  <section id="success" class="screen center" hidden><div class="success">✓</div><h2>Order placed!</h2><p>Your order has been sent to The Chakna Point.</p><button id="continue">Back to Home</button></section>
+</div>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="app.js"></script>
+</body></html>
