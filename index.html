@@ -1,1 +1,21 @@
-<!doctype html><html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#111827"><link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css"><title>The Chakna Point</title></head><body><div id="app"><section id="home" class="screen"><header><b>The Chakna Point</b></header><div class="hero"><h2>Order your favourite chakna 🍗</h2><p>Fresh • Fast • Nearby delivery</p></div><div id="menu" class="grid"></div><div class="cartbar">Cart: <b id="cartCount">0</b> items <button id="openCart">View Cart ₹<span id="cartTotal">0</span></button></div></section><section id="cart" class="screen" hidden><header><button class="ghost" id="backHome">← Back</button><b>Your Cart</b></header><div id="cartItems"></div><div class="summary"><div>Subtotal <b id="subtotal">₹0</b></div><div>Delivery <b id="delivery">₹30</b></div><div class="total">Total <b id="grandTotal">₹0</b></div></div><input id="name" placeholder="Your name"><textarea id="address" placeholder="Full delivery address"></textarea><button id="locationBtn" class="secondary">📍 Use current location</button><select id="payment"><option value="COD">Cash on Delivery</option><option value="UPI">UPI</option></select><button id="placeOrder">Place Order</button><p id="orderMsg" class="msg"></p></section><section id="success" class="screen center" hidden><div class="success">✓</div><h2>Order placed!</h2><p>Your order has been sent to The Chakna Point.</p><button id="continue">Back to Home</button></section></div><script src="app.js"></script></body></html>
+<!doctype html><html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#111827"><link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css"><title>The Chakna Point</title></head><body>
+<div id="app">
+<section id="home" class="screen"><header><b>The Chakna Point</b></header><div class="hero"><h2>Order your favourite chakna 🍗</h2><p>Fresh • Fast • Nearby delivery</p></div>
+<div id="menu" class="grid">
+<div class="item"><h3>Chicken Kasa</h3><div class="price">₹70</div><button class="add" onclick="add(0)">Add</button></div>
+<div class="item"><h3>Chicken Pakoda</h3><div class="price">₹70</div><button class="add" onclick="add(1)">Add</button></div>
+<div class="item"><h3>Chicken Liver</h3><div class="price">₹70</div><button class="add" onclick="add(2)">Add</button></div>
+<div class="item"><h3>Egg Omelette</h3><div class="price">₹50</div><button class="add" onclick="add(3)">Add</button></div>
+<div class="item"><h3>Egg Chop</h3><div class="price">₹40</div><button class="add" onclick="add(4)">Add</button></div>
+<div class="item"><h3>Mutton</h3><div class="price">₹80</div><button class="add" onclick="add(5)">Add</button></div>
+<div class="item"><h3>Sprite</h3><div class="price">₹20</div><button class="add" onclick="add(6)">Add</button></div>
+<div class="item"><h3>Thums Up</h3><div class="price">₹20</div><button class="add" onclick="add(7)">Add</button></div>
+<div class="item"><h3>Water Bottle</h3><div class="price">₹20</div><button class="add" onclick="add(8)">Add</button></div>
+<div class="item"><h3>Kurkure Legs</h3><div class="price">₹20</div><button class="add" onclick="add(9)">Add</button></div>
+<div class="item"><h3>Cigarette Packet</h3><div class="price">Price not set</div></div>
+</div>
+<div class="cartbar">Cart: <b id="cartCount">0</b> items <button id="openCart">View Cart ₹<span id="cartTotal">0</span></button></div>
+</section>
+<section id="cart" class="screen" hidden><header><button class="ghost" id="backHome">← Back</button><b>Your Cart</b></header><div id="cartItems"></div><div class="summary"><div>Subtotal <b id="subtotal">₹0</b></div><div>Delivery <b id="delivery">₹30</b></div><div class="total">Total <b id="grandTotal">₹0</b></div></div><input id="name" placeholder="Your name"><textarea id="address" placeholder="Full delivery address"></textarea><button id="locationBtn" class="secondary">📍 Use current location</button><select id="payment"><option value="COD">Cash on Delivery</option><option value="UPI">UPI</option></select><button id="placeOrder">Place Order</button><p id="orderMsg" class="msg"></p></section>
+<section id="success" class="screen center" hidden><div class="success">✓</div><h2>Order placed!</h2><p>Your order has been sent to The Chakna Point.</p><button id="continue">Back to Home</button></section>
+</div><script src="app.js?v=20260909"></script></body></html>
