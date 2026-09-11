@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent">
+<LinearLayout android:orientation="vertical" android:padding="20dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+<TextView android:text="🍗  The Chakna Point" android:textSize="28sp" android:textStyle="bold" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+<TextView android:id="@+id/subtitle" android:text="Customer Login" android:textSize="16sp" android:layout_marginTop="6dp" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+<LinearLayout android:id="@+id/loginPanel" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+<EditText android:id="@+id/phone" android:hint="10-digit mobile number" android:inputType="phone" android:maxLength="10" android:layout_marginTop="24dp" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+<FrameLayout android:id="@+id/recaptchaContainer" android:layout_width="match_parent" android:layout_height="1dp"/>
+<Button android:id="@+id/sendOtp" android:text="Send OTP" android:layout_marginTop="12dp" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+<EditText android:id="@+id/otp" android:hint="6-digit OTP" android:inputType="number" android:maxLength="6" android:visibility="gone" android:layout_marginTop="12dp" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+<Button android:id="@+id/verifyOtp" android:text="Verify OTP" android:visibility="gone" android:layout_marginTop="8dp" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+<TextView android:id="@+id/loginMsg" android:textSize="14sp" android:layout_marginTop="8dp" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+</LinearLayout>
+<LinearLayout android:id="@+id/homePanel" android:orientation="vertical" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content">
+<Button android:id="@+id/logout" android:text="Logout" android:layout_gravity="end" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+<TextView android:text="Menu" android:textSize="24sp" android:textStyle="bold" android:layout_marginTop="10dp" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+<LinearLayout android:id="@+id/menu" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+<TextView android:id="@+id/cartSummary" android:text="Cart: 0 items" android:textSize="18sp" android:textStyle="bold" android:layout_marginTop="20dp" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+<Button android:id="@+id/viewCart" android:text="View Cart" android:layout_marginTop="8dp" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+</LinearLayout>
+<LinearLayout android:id="@+id/cartPanel" android:orientation="vertical" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content">
+<Button android:id="@+id/backHome" android:text="← Back" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+<TextView android:text="Your Cart" android:textSize="24sp" android:textStyle="bold" android:layout_marginTop="8dp" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+<LinearLayout android:id="@+id/cartItems" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+<TextView android:id="@+id/totals" android:textSize="18sp" android:layout_marginTop="12dp" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+<EditText android:id="@+id/name" android:hint="Your name" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+<EditText android:id="@+id/address" android:hint="Full delivery address" android:minLines="3" android:gravity="top" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+<Spinner android:id="@+id/payment" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+<Button android:id="@+id/placeOrder" android:text="Place Order" android:layout_marginTop="12dp" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+<TextView android:id="@+id/orderMsg" android:layout_marginTop="8dp" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+</LinearLayout>
+</LinearLayout>
+</ScrollView>

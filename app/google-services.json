@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "364742522195",
+    "project_id": "the-chakna-point",
+    "storage_bucket": "the-chakna-point.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:364742522195:android:97ac9c14b76d39e4a91da6",
+        "android_client_info": {
+          "package_name": "com.thechaknapoint.customer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0QrLbtcai3KhpvfG4YjWva3dHOHDfL7o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
