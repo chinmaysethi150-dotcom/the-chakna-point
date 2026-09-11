@@ -1,0 +1,13 @@
+workflows:
+  android-debug:
+    name: The Chakna Point Customer APK
+    max_build_duration: 60
+    instance_type: mac_mini_m2
+
+    scripts:
+      - name: Build Android APK
+        script: |
+          gradle --no-daemon assembleDebug
+
+    artifacts:
+      - app/build/outputs/apk/debug/*.apk
