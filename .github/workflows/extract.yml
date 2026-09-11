@@ -1,0 +1,48 @@
+name: Setup Android Project
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "*_SOURCE.zip"
+
+permissions:
+  contents: write
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Extract Android project
+        run: |
+          ZIP=$(find . -maxdepth 1 -name '*_SOURCE.zip' | head -1)
+          mkdir extracted
+          unzip -q "$ZIP" -d extracted
+
+          PROJECT_DIR=$(find extracted -maxdepth 2 -type d -name 'The_Chakna_Point_Customer_Android' | head -1)
+
+          if [ -z "$PROJECT_DIR" ]; then
+            echo "Android project folder not found"
+            exit 1
+          fi
+
+          find . -maxdepth 1 -type f ! -name '*.zip' -delete
+          find . -maxdepth 1 -mindepth 1 -type d \
+            ! -name '.git' ! -name '.github' \
+            -exec rm -rf {} +
+
+          cp -a "$PROJECT_DIR"/. .
+          rm -rf extracted
+          rm -f "$ZIP"
+
+      - name: Commit Android project
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add -A
+          git commit -m "Setup native Android project" || exit 0
+          git push
